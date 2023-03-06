@@ -43,5 +43,6 @@ namespace MercuryProject.Domain.User
                 email: email, password: password, confirmedPassword: confirmedPassword,
                 createdDateTime: DateTime.UtcNow, updatedDateTime: DateTime.UtcNow);
         }
+        public User() {}
     }
 }
