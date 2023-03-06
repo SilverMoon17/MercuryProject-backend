@@ -27,6 +27,10 @@ namespace MercuryProject.Application.Authentication.Commands.Register
         public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
+            if (command.Password != command.ConfirmedPassword)
+            {
+                return Errors.User.PasswordConfirmation;
+            }
             // 1. Check if user already exists
             if (_userRepository.GetUserByEmail(command.Email) is not null)
             {

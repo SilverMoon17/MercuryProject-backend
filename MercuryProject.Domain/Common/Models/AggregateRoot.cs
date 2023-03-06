@@ -13,5 +13,6 @@ namespace MercuryProject.Domain.Common.Models
         {
 
         }
+        protected AggregateRoot() {}
     }
 }

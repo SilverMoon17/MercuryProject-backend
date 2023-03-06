@@ -43,6 +43,7 @@ namespace MercuryProject.Domain.Common.Models
         {
             return Equals((object?)other);
         }
+        protected ValueObject() {}
     }
 
     public class Price : ValueObject

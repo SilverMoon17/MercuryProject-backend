@@ -12,7 +12,7 @@ namespace MercuryProject.Infrastructure.Persistence
     {
         public MercuryProjectDbContext(DbContextOptions options) : base(options)
         {
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         public DbSet<User> Users { get; set; }
