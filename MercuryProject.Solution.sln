@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercuryProject.API", "MercuryProject.API\MercuryProject.API.csproj", "{054E6A96-5297-40F7-965E-F7D6309E2C9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercuryProject.Contracts", "MercuryProject.Contracts\MercuryProject.Contracts.csproj", "{4C3A3AF8-3BF9-43F2-851F-E6E8F9F485D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercuryProject.Infrastructure", "Infrastructure\MercuryProject.Infrastructure.csproj", "{A03C5663-3072-4635-BAB6-510309369EB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercuryProject.Domain", "MercuryProject.Domain\MercuryProject.Domain.csproj", "{8D655538-04C5-441D-8CDB-E80DF27429FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercuryProject.Application", "MercuryProject.Application\MercuryProject.Application.csproj", "{6C865A19-4788-4888-A8DB-65EC96E1C535}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{054E6A96-5297-40F7-965E-F7D6309E2C9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{054E6A96-5297-40F7-965E-F7D6309E2C9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{054E6A96-5297-40F7-965E-F7D6309E2C9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{054E6A96-5297-40F7-965E-F7D6309E2C9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3A3AF8-3BF9-43F2-851F-E6E8F9F485D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3A3AF8-3BF9-43F2-851F-E6E8F9F485D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3A3AF8-3BF9-43F2-851F-E6E8F9F485D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3A3AF8-3BF9-43F2-851F-E6E8F9F485D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03C5663-3072-4635-BAB6-510309369EB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03C5663-3072-4635-BAB6-510309369EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03C5663-3072-4635-BAB6-510309369EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03C5663-3072-4635-BAB6-510309369EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D655538-04C5-441D-8CDB-E80DF27429FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D655538-04C5-441D-8CDB-E80DF27429FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D655538-04C5-441D-8CDB-E80DF27429FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D655538-04C5-441D-8CDB-E80DF27429FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C865A19-4788-4888-A8DB-65EC96E1C535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C865A19-4788-4888-A8DB-65EC96E1C535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C865A19-4788-4888-A8DB-65EC96E1C535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C865A19-4788-4888-A8DB-65EC96E1C535}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3A17CBE-2C50-426A-9DFA-CDCF1F5B21C0}
+	EndGlobalSection
+EndGlobal
