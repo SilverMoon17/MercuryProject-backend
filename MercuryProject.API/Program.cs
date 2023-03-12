@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSwaggerGen(option =>
 {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "BuberDinner", Version = "v1" });
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "MercuryProject", Version = "v1" });
     option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,

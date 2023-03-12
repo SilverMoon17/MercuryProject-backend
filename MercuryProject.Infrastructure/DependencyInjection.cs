@@ -10,8 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using MercuryProject.Infrastructure.Persistence;
 using Microsoft.Extensions.Options;
-using MercuryProject.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
+using MercuryProject.Infrastructure.Persistence.Repositories;
 
 namespace MercuryProject.Infrastructure
 {

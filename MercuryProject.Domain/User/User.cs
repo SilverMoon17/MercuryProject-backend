@@ -23,7 +23,7 @@ namespace MercuryProject.Domain.User
 
 
         private User
-        (UserId userId, string username, string firstName, string lastName, string email,
+        (UserId userId, string role, string username, string firstName, string lastName, string email,
             string password, string confirmedPassword
         , DateTime createdDateTime, DateTime updatedDateTime) : base(userId)
         {
@@ -37,9 +37,12 @@ namespace MercuryProject.Domain.User
             UpdatedDateTime = updatedDateTime;
         }
 
-        public static User Create(string username, string firstName, string lastName, string email, string password, string confirmedPassword)
+        public static User Create
+        (string username, string firstName, string lastName, string email, string password,
+            string confirmedPassword, string role = "User"
+        )
         {
-            return new(UserId.CreateUnique(), username: username, firstName: firstName, lastName: lastName,
+            return new(UserId.CreateUnique(), role: role, username: username, firstName: firstName, lastName: lastName,
                 email: email, password: password, confirmedPassword: confirmedPassword,
                 createdDateTime: DateTime.UtcNow, updatedDateTime: DateTime.UtcNow);
         }

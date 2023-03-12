@@ -26,10 +26,7 @@ namespace MercuryProject.Application.Authentication.Queries.Login
 
         public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
         {
-            if (_userRepository.GetUserByEmail(query.Email) is not User user)
-            {
-                return Errors.Authentication.InvalidCredentials;
-            }
+            var user = await _userRepository.GetUserByEmail(query.Email)!;
             // 2. Validate the password is correct
             if (user.Password != query.Password)
             {

@@ -24,4 +24,8 @@
     <ProjectReference Include="..\MercuryProject.Application\MercuryProject.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\Repositories\Common\" />
+  </ItemGroup>
+
 </Project>

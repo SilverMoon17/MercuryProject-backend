@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,17 +28,19 @@ namespace MercuryProject.Application.Authentication.Commands.Register
         public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
+            var userCheckByEmail = await _userRepository.GetUserByEmail(command.Email)!;
+            var userCheckByUsername = await _userRepository.GetUserByUsername(command.Username)!;
             if (command.Password != command.ConfirmedPassword)
             {
                 return Errors.User.PasswordConfirmation;
             }
             // 1. Check if user already exists
-            if (_userRepository.GetUserByEmail(command.Email) is not null)
+            if (userCheckByEmail is not null)
             {
                 return Errors.User.DuplicateEmail;
             }
 
-            if (_userRepository.GetUserByUsername(command.Username) is not null)
+            if (userCheckByUsername is not null)
             {
                 return Errors.User.DuplicateUsername;
             }

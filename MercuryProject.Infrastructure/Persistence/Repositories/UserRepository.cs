@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ErrorOr;
 using MercuryProject.Application.Common.Interfaces.Persistence;
+using MercuryProject.Domain.Common.Errors;
 using MercuryProject.Domain.User;
+using MercuryProject.Domain.User.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace MercuryProject.Infrastructure.Persistence.Repositories
@@ -18,16 +21,14 @@ namespace MercuryProject.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public User? GetUserByEmail(string email)
+        public async Task<User> GetUserByEmail(string email)
         {
-            var user = _dbContext.Set<User>().FirstOrDefault(u => u.Email == email);
-            return user;
+            return await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public User? GetUserByUsername(string username)
+        public async Task<User> GetUserByUsername(string username)
         {
-            var user = _dbContext.Set<User>().FirstOrDefault(u => u.Username == username);
-            return user;
+            return await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Username == username);
         }
 
         public void Add(User user)
