@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MercuryProject.API.Controllers
 {
     [Route("[controller]")]
+    [Authorize(Roles = "Admin")]
     public class ProductController : ApiController
     {
         [HttpGet("listProducts")]
