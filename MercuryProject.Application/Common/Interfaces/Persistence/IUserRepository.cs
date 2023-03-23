@@ -13,6 +13,8 @@ namespace MercuryProject.Application.Common.Interfaces.Persistence
     {
         Task<User>?GetUserByEmail(string email);
         Task<User>?GetUserByUsername(string username);
+        Task<ErrorOr<bool>> AddAdminByUsername(string username);
+        Task UpdateUser(string username);
         void Add(User user);
     }
 }

@@ -31,6 +31,30 @@ namespace MercuryProject.Infrastructure.Persistence.Repositories
             return await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Username == username);
         }
 
+        public async Task<ErrorOr<bool>> AddAdminByUsername(string username)
+        {
+            var user = await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Username == username);
+            if (user != null)
+            {
+                user.Role = "Admin";
+                _dbContext.Update(user);
+                await UpdateUser(username);
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return Errors.User.UserNotFoundError;
+        }
+
+        public async Task UpdateUser(string username)
+        {
+            var user = await _dbContext.Set<User>().FirstOrDefaultAsync(u => u.Username == username);
+
+            user.UpdatedDateTime = DateTime.UtcNow;
+            _dbContext.Update(user);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public void Add(User user)
         {
             _dbContext.AddAsync(user);
