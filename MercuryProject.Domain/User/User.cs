@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MercuryProject.Domain.Common.Models;
-using MercuryProject.Domain.Enums;
 using MercuryProject.Domain.User.ValueObjects;
 
 namespace MercuryProject.Domain.User

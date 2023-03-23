@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
-using MercuryProject.Application.Authentication.Queries.Login;
 
-namespace MercuryProject.Application.Authentication.Queries
+namespace MercuryProject.Application.Authentication.Queries.Login
 {
     public class LoginQueryValidator : AbstractValidator<LoginQuery>
     {

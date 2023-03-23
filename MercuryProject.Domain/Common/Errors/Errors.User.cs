@@ -18,6 +18,8 @@ namespace MercuryProject.Domain.Common.Errors
                 Error.Conflict(code: "User.DuplicateUsername", description: "Username is already in use.");
             public static Error PasswordConfirmation =>
                 Error.Conflict(code: "User.PasswordConfirmation", description: "Password and confirmation password must be the same");
+            public static Error UserNotFoundError =>
+                Error.Conflict(code: "User.UserNotFound", description: "User not found");
         }
     }
 }
