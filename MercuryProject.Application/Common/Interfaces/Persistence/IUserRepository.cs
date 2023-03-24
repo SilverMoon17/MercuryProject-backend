@@ -15,6 +15,7 @@ namespace MercuryProject.Application.Common.Interfaces.Persistence
         Task<User>?GetUserByUsername(string username);
         Task<ErrorOr<bool>> AddAdminByUsername(string username);
         Task UpdateUser(string username);
+        public string GetUserId();
         void Add(User user);
     }
 }

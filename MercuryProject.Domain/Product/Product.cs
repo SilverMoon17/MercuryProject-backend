@@ -11,16 +11,16 @@ namespace MercuryProject.Domain.Product
 {
     public sealed class Product : AggregateRoot<ProductId>
     {
-
         public UserId UserId { get; }
         public string Name { get; }
         public string Description { get; }
         public int Stock { get; }
+        public double Price { get; }
         public string Category { get; }
         public string IconUrl { get; }
         public DateTime CreatedDateTime { get; }
         public DateTime UpdatedDateTime { get; }
-        public Product(ProductId productId, UserId userId, string name, string description, int stock, string category, string iconUrl, DateTime createdDateTime, DateTime updatedDateTime) : base(productId)
+        public Product(ProductId productId, UserId userId, string name, string description, double price, int stock, string category, string iconUrl, DateTime createdDateTime, DateTime updatedDateTime) : base(productId)
         {
             UserId = userId;
             Name = name;
@@ -30,13 +30,19 @@ namespace MercuryProject.Domain.Product
             IconUrl = iconUrl;
             CreatedDateTime = createdDateTime;
             UpdatedDateTime = updatedDateTime;
+            Price = price;
         }
 
         public static Product Create
-            (UserId userId, string name, string description, int stock, string category, string iconUrl)
+            (UserId userId,string name, string description, double price, int stock, string category, string iconUrl)
         {
-            return new(ProductId.CreateUnique(), userId, name, description, stock, category, iconUrl, DateTime.UtcNow,
+            return new(ProductId.CreateUnique(), userId, name, description, price, stock, category, iconUrl, DateTime.UtcNow,
                 DateTime.UtcNow);
+        }
+
+        public Product(UserId userId)
+        {
+            UserId = userId;
         }
     }
 }

@@ -3,8 +3,6 @@ using ErrorOr;
 using FluentValidation;
 using MediatR;
 using MercuryProject.Application.Authentication.Behaviors;
-using MercuryProject.Application.Authentication.Commands.Register;
-using MercuryProject.Application.Authentication.Common;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MercuryProject.Application

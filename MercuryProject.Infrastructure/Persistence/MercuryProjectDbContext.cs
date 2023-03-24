@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MercuryProject.Domain.Product;
 using MercuryProject.Domain.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,8 @@ namespace MercuryProject.Infrastructure.Persistence
             Database.EnsureCreated();
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Product> Products { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

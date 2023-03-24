@@ -1,7 +1,12 @@
 ﻿using ErrorOr;
+using MapsterMapper;
+using MediatR;
 using MercuryProject.Application.Authentication.Commands.Register;
 using MercuryProject.Application.Common.Interfaces.Persistence;
+using MercuryProject.Application.Product.Commands.Create;
+using MercuryProject.Application.Product.Common;
 using MercuryProject.Contracts.Authentication;
+using MercuryProject.Contracts.Product;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +19,14 @@ namespace MercuryProject.API.Controllers
     public class AdminController : ApiController
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+        private readonly ISender _mediator;
 
-        public AdminController(IUserRepository userRepository)
+        public AdminController(IUserRepository userRepository, ISender mediator, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mediator = mediator;
+            _mapper = mapper;
         }
 
         [HttpPatch]
@@ -27,6 +36,16 @@ namespace MercuryProject.API.Controllers
             ErrorOr<bool> result= await _userRepository.AddAdminByUsername(username);
 
             return result.Match(result => Ok(),
+                errors => Problem(errors));
+        }
+
+        [HttpPost("createProduct")]
+        public async Task<IActionResult> CreateProduct(ProductCreateRequest request)
+        {
+            var command = _mapper.Map<ProductCreateCommand>(request);
+            ErrorOr<ProductCreateResult> result = await _mediator.Send(command);
+
+            return result.Match(result => Ok(_mapper.Map<ProductCreateResponse>(result)),
                 errors => Problem(errors));
         }
 
