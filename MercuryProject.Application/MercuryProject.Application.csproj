@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MercuryProject.Contracts\MercuryProject.Contracts.csproj" />
     <ProjectReference Include="..\MercuryProject.Domain\MercuryProject.Domain.csproj" />
   </ItemGroup>
 

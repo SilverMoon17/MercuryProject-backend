@@ -12,6 +12,9 @@ using MercuryProject.Infrastructure.Persistence;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using MercuryProject.Infrastructure.Persistence.Repositories;
+using Microsoft.Identity.Client;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace MercuryProject.Infrastructure
 {
@@ -23,6 +26,9 @@ namespace MercuryProject.Infrastructure
             services.AddAuth(builderConfiguration)
                 .AddPersistence(builderConfiguration);
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+            services.AddSingleton<IPasswordHasher, PasswordHasher>();
+            services.AddHttpContextAccessor();
+            services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             return services;
         }
 
@@ -30,6 +36,7 @@ namespace MercuryProject.Infrastructure
         {
             services.AddDbContext<MercuryProjectDbContext>(options => options.UseSqlServer(builderConfiguration["ConnectionStrings:DefaultConnection"]));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             return services;
         }
 
@@ -41,6 +48,11 @@ namespace MercuryProject.Infrastructure
 
             services.AddSingleton(Options.Create(jwtSettings));
             services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+
+            var hashSettings = new HashSettings();
+            builderConfiguration.Bind(HashSettings.SectionName, hashSettings);
+
+            services.AddSingleton(Options.Create(hashSettings));
 
             services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters()

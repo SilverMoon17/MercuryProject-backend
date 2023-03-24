@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>be215f60-b3b5-4d4a-9a1e-d1eae6e2942d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,16 +17,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MercuryProject.Application\MercuryProject.Application.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Persistence\Repositories\Common\" />
   </ItemGroup>
 
 </Project>
