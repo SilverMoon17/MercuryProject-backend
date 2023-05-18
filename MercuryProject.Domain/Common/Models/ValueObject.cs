@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MercuryProject.Domain.Common.Models
+﻿namespace MercuryProject.Domain.Common.Models
 {
     public abstract class ValueObject : IEquatable<ValueObject>
     {
@@ -30,7 +24,7 @@ namespace MercuryProject.Domain.Common.Models
 
         public static bool operator !=(ValueObject left, ValueObject right)
         {
-            return !(Equals(left,right));
+            return !(Equals(left, right));
         }
 
         public override int GetHashCode()
@@ -43,7 +37,7 @@ namespace MercuryProject.Domain.Common.Models
         {
             return Equals((object?)other);
         }
-        protected ValueObject() {}
+        protected ValueObject() { }
     }
 
     public class Price : ValueObject

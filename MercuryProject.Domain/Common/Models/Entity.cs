@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MercuryProject.Domain.Common.Models
+﻿namespace MercuryProject.Domain.Common.Models
 {
     public abstract class Entity<TId> : IEquatable<Entity<TId>>
         where TId : notnull
@@ -36,7 +27,7 @@ namespace MercuryProject.Domain.Common.Models
 
         public static bool operator !=(Entity<TId> left, Entity<TId> right)
         {
-            return !(Equals(left,right));
+            return !(Equals(left, right));
         }
 
         public override int GetHashCode()
@@ -44,6 +35,6 @@ namespace MercuryProject.Domain.Common.Models
             return Id.GetHashCode();
         }
 
-        protected Entity() {}
+        protected Entity() { }
     }
 }

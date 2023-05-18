@@ -1,9 +1,8 @@
-﻿using System.Reflection;
-using ErrorOr;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 using MercuryProject.Application.Authentication.Behaviors;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace MercuryProject.Application
 {

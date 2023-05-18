@@ -25,8 +25,20 @@ namespace MercuryProject.Infrastructure.Persistence.Configurations
                     value => UserId.Create(value));
 
             builder.Property(u => u.Username).HasMaxLength(30);
-            builder.Property(u => u.FirstName).HasMaxLength(50);
-            builder.Property(u => u.LastName).HasMaxLength(50);
+            builder.Property(u => u.Fullname).HasMaxLength(100);
+            //builder.OwnsMany(u => u.Ideas, ib =>
+            //{
+            //    ib.ToTable("Ideas");
+
+            //    ib.HasKey(i => i.Id);
+
+            //    ib.Property(i => i.Id)
+            //        .ValueGeneratedNever()
+            //        .HasConversion(id => id.Value, value => IdeaId.CreateUnique());
+
+            //});
+            //builder.Metadata.FindNavigation(nameof(User.Ideas))!
+            //    .SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }

@@ -1,13 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MercuryProject.Domain.Product;
+﻿using MercuryProject.Domain.Product;
 using MercuryProject.Domain.Product.ValueObjects;
 using MercuryProject.Domain.User.ValueObjects;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MercuryProject.Infrastructure.Persistence.Configurations
 {
@@ -33,10 +28,10 @@ namespace MercuryProject.Infrastructure.Persistence.Configurations
                 .HasConversion(id => id.Value,
                     value => UserId.Create(value));
 
-            builder.Property(p => p.Name).HasMaxLength(50);
-            builder.Property(p => p.Description).HasMaxLength(300);
+            builder.Property(p => p.Name).HasMaxLength(150);
+            builder.Property(p => p.Description);
             builder.Property(p => p.Stock);
-            builder.Property(p => p.Price);
+            builder.Property(p => p.Price).HasPrecision(18, 2);
             builder.Property(p => p.Category);
             builder.Property(p => p.IconUrl);
             builder.Property(p => p.CreatedDateTime);

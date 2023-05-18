@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MercuryProject.Domain.Common.Models
+﻿namespace MercuryProject.Domain.Common.Models
 {
     public abstract class AggregateRoot<TId> : Entity<TId>
         where TId : notnull
@@ -13,6 +7,6 @@ namespace MercuryProject.Domain.Common.Models
         {
 
         }
-        protected AggregateRoot() {}
+        protected AggregateRoot() { }
     }
 }

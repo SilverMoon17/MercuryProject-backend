@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ErrorOr;
 using MediatR;
-using MercuryProject.Contracts.Product;
-using ErrorOr;
 using MercuryProject.Application.Product.Common;
 
 namespace MercuryProject.Application.Product.Commands.Create
@@ -14,9 +8,9 @@ namespace MercuryProject.Application.Product.Commands.Create
     (
         string Name,
         string Description,
-        double Price,
+        decimal Price,
         int Stock,
         string Category,
         string IconUrl
-    ) : IRequest<ErrorOr<ProductCreateResult>>;
+    ) : IRequest<ErrorOr<ProductResult>>;
 }

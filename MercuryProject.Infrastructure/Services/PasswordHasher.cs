@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using MercuryProject.Application.Common.Interfaces.Services;
+﻿using MercuryProject.Application.Common.Interfaces.Services;
 using MercuryProject.Infrastructure.Authentication;
 using Microsoft.Extensions.Options;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace MercuryProject.Infrastructure.Services
 {

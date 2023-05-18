@@ -2,11 +2,11 @@
 using MapsterMapper;
 using MediatR;
 using MercuryProject.Application.Authentication.Commands.Register;
-using MercuryProject.Contracts.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using MercuryProject.Application.Authentication.Queries.Login;
 using MercuryProject.Application.Authentication.Common;
+using MercuryProject.Application.Authentication.Queries.Login;
+using MercuryProject.Contracts.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MercuryProject.API.Controllers
 {
@@ -31,7 +31,7 @@ namespace MercuryProject.API.Controllers
 
             return result.Match(result => Ok(_mapper.Map<AuthenticationResponse>(result)),
                 errors => Problem(errors));
-        }   
+        }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequest request)

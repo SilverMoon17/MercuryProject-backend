@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using MercuryProject.Application.Common.Interfaces.Authentication;
+﻿using MercuryProject.Application.Common.Interfaces.Authentication;
 using MercuryProject.Application.Common.Interfaces.Services;
 using MercuryProject.Domain.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace MercuryProject.Infrastructure.Authentication
 {
@@ -32,8 +28,7 @@ namespace MercuryProject.Infrastructure.Authentication
             var claims = new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, user.Id.Value.ToString()),
-                    new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
-                    new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName),
+                    new Claim(JwtRegisteredClaimNames.Name, user.Fullname),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(ClaimTypes.Role, user.Role)
                 };
@@ -41,7 +36,7 @@ namespace MercuryProject.Infrastructure.Authentication
             var securityToken = new JwtSecurityToken(claims: claims,
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
-                expires : _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
+                expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
                 signingCredentials: signingCredentials);
 
             return new JwtSecurityTokenHandler().WriteToken(securityToken);
