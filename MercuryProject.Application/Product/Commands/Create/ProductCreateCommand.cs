@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using MediatR;
 using MercuryProject.Application.Product.Common;
+using Microsoft.AspNetCore.Http;
 
 namespace MercuryProject.Application.Product.Commands.Create
 {
@@ -11,6 +12,7 @@ namespace MercuryProject.Application.Product.Commands.Create
         decimal Price,
         int Stock,
         string Category,
-        string IconUrl
+        // string IconUrl,
+        List<IFormFile>? Files
     ) : IRequest<ErrorOr<ProductResult>>;
 }

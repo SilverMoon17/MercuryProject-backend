@@ -2,19 +2,18 @@
 using MercuryProject.Application.Common.Interfaces.Persistence;
 using MercuryProject.Application.Common.Interfaces.Services;
 using MercuryProject.Infrastructure.Authentication;
+using MercuryProject.Infrastructure.Persistence;
+using MercuryProject.Infrastructure.Persistence.Repositories;
 using MercuryProject.Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using MercuryProject.Infrastructure.Persistence;
-using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
-using MercuryProject.Infrastructure.Persistence.Repositories;
-using Microsoft.Identity.Client;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace MercuryProject.Infrastructure
 {
@@ -37,6 +36,9 @@ namespace MercuryProject.Infrastructure
             services.AddDbContext<MercuryProjectDbContext>(options => options.UseSqlServer(builderConfiguration["ConnectionStrings:DefaultConnection"]));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IIdeaRepository, IdeaRepository>();
+            services.AddScoped<ICartItemRepository, CartItemRepository>();
+            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             return services;
         }
 
@@ -56,15 +58,15 @@ namespace MercuryProject.Infrastructure
 
             services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters()
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = jwtSettings.Issuer,
-                ValidAudience = jwtSettings.Audience,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
-            });
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
+                });
 
             return services;
         }

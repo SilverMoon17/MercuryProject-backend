@@ -1,8 +1,6 @@
 ﻿using ErrorOr;
 using FluentValidation;
 using MediatR;
-using MercuryProject.Application.Authentication.Commands.Register;
-using MercuryProject.Application.Authentication.Common;
 
 namespace MercuryProject.Application.Authentication.Behaviors
 {

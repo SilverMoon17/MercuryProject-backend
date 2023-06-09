@@ -9,8 +9,8 @@ namespace MercuryProject.API.Controllers
         [HttpPost]
         public IActionResult Error()
         {
-            Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;    
-            return Problem(title: exception?.Message ,statusCode: 400);
+            Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
+            return Problem(title: exception?.Message, statusCode: 400);
         }
     }
 }
