@@ -1,4 +1,6 @@
-﻿namespace MercuryProject.Contracts.Product
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MercuryProject.Contracts.Product
 {
     public record ProductCreateRequest(
         string Name,
@@ -6,5 +8,6 @@
         decimal Price,
         int Stock,
         string Category,
-        string IconUrl);
+        // string IconUrl,
+        List<IFormFile>? Files);
 }

@@ -9,7 +9,7 @@ using MercuryProject.Domain.User;
 
 namespace MercuryProject.Application.Authentication.Commands.Register
 {
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommand ,ErrorOr<AuthenticationResult>>
+    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
     {
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IUserRepository _userRepository;
@@ -43,10 +43,10 @@ namespace MercuryProject.Application.Authentication.Commands.Register
             }
 
             // Create user (generate unique ID)
-            var user = User.Create(command.Username,
+            var user = Domain.User.User.Create(command.Username,
                 command.FirstName,
                 command.LastName,
-                command.Email, 
+                command.Email,
                 _passwordHasher.Hash(command.Password),
                 _passwordHasher.Hash(command.ConfirmedPassword));
 

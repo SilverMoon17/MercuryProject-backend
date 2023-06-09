@@ -1,4 +1,6 @@
-﻿namespace MercuryProject.Contracts.Idea
+﻿using Microsoft.AspNetCore.Http;
+
+namespace MercuryProject.Contracts.Idea
 {
     public record IdeaCreateRequest
     (
@@ -6,6 +8,6 @@
         string Description,
         decimal Goal,
         string Category,
-        List<string> IconUrls
+        List<IFormFile>? Files
     );
 }

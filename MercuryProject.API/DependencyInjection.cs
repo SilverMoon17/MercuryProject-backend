@@ -1,7 +1,6 @@
-﻿using MediatR;
-using MercuryProject.API.Common.Mapping;
-using MercuryProject.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
+﻿using MercuryProject.API.Common.Mapping;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace MercuryProject.Application
 {
@@ -9,6 +8,12 @@ namespace MercuryProject.Application
     {
         public static IServiceCollection AddPresentation(this IServiceCollection services)
         {
+            //JsonSerializerOptions options = new()
+            //{
+            //    ReferenceHandler = ReferenceHandler.Preserve,
+            //    WriteIndented = true,
+            //    MaxDepth = 64
+            //};
             services.AddMappings();
             services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

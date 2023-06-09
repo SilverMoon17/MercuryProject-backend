@@ -30,9 +30,18 @@ namespace MercuryProject.API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CreateProduct(ProductCreateRequest request)
+        public async Task<IActionResult> CreateProduct([FromForm] ProductCreateRequest request)
         {
-            var command = _mapper.Map<ProductCreateCommand>(request);
+            //var command = _mapper.Map<ProductCreateCommand>(request);
+            var command = new ProductCreateCommand
+            (
+                request.Name,
+                request.Description,
+                request.Price,
+                request.Stock,
+                request.Category,
+                request.Files != null ? request.Files.ToList() : null
+                );
             ErrorOr<ProductResult> result = await _mediator.Send(command);
 
             return result.Match(result => Ok(_mapper.Map<ProductResponse>(result)),

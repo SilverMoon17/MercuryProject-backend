@@ -2,6 +2,7 @@ using MercuryProject.Application;
 using MercuryProject.Infrastructure;
 using Microsoft.OpenApi.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,6 +17,7 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
 
 builder.Services.AddSwaggerGen(option =>
 {

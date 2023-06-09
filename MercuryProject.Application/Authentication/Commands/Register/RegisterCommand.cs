@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ErrorOr;
 using MediatR;
-using ErrorOr;
 using MercuryProject.Application.Authentication.Common;
 
 namespace MercuryProject.Application.Authentication.Commands.Register
@@ -15,5 +10,5 @@ namespace MercuryProject.Application.Authentication.Commands.Register
         string LastName,
         string Email,
         string Password,
-        string ConfirmedPassword) :IRequest<ErrorOr<AuthenticationResult>>;
+        string ConfirmedPassword) : IRequest<ErrorOr<AuthenticationResult>>;
 }

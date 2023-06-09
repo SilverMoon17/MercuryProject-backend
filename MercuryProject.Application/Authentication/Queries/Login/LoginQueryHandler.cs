@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ErrorOr;
+﻿using ErrorOr;
 using MediatR;
 using MercuryProject.Application.Authentication.Common;
 using MercuryProject.Application.Common.Interfaces.Authentication;
 using MercuryProject.Application.Common.Interfaces.Persistence;
 using MercuryProject.Application.Common.Interfaces.Services;
 using MercuryProject.Domain.Common.Errors;
-using MercuryProject.Domain.User;
 
 namespace MercuryProject.Application.Authentication.Queries.Login
 {
@@ -30,6 +24,11 @@ namespace MercuryProject.Application.Authentication.Queries.Login
         public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByEmail(query.Email)!;
+
+            if (user is null)
+            {
+                return Errors.Authentication.InvalidCredentials;
+            }
 
             // 2. Validate the password is correct
             if (user.Password != _passwordHasher.Hash(query.Password))

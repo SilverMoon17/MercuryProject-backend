@@ -1,4 +1,5 @@
 ﻿using MercuryProject.Domain.User.ValueObjects;
+using Microsoft.AspNetCore.Http;
 
 namespace MercuryProject.Contracts.Product
 {
@@ -11,7 +12,7 @@ namespace MercuryProject.Contracts.Product
         decimal Price,
         int Stock,
         string Category,
-        string IconUrl,
+        IReadOnlyList<string>? ProductImageUrls,
         DateTime CreatedDateTime,
         DateTime UpdatedDateTime
     );

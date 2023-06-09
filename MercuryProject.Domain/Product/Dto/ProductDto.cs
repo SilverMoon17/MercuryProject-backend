@@ -15,6 +15,6 @@ namespace MercuryProject.Domain.Product.Dto
         public int Stock { get; set; }
         public decimal Price { get; set; }
         public string Category { get; set; }
-        public string? IconUrl { get; set; }
+        public List<string>? ProductImageUrls { get; set; }
     }
 }
