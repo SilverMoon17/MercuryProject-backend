@@ -33,9 +33,16 @@ namespace MercuryProject.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateIdea(IdeaCreateRequest request)
+        public async Task<IActionResult> CreateIdea([FromForm] IdeaCreateRequest request)
         {
-            var command = _mapper.Map<IdeaCreateCommand>(request);
+            //var command = _mapper.Map<IdeaCreateCommand>(request);
+            var command = new IdeaCreateCommand(
+                request.Title,
+                request.Description,
+                request.Goal,
+                request.Category,
+                request.Files
+            );
             ErrorOr<IdeaResult> result = await _mediator.Send(command);
 
             return result.Match(result => Ok(_mapper.Map<IdeaResponse>(result)),
