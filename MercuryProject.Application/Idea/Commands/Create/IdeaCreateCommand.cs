@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using MediatR;
 using MercuryProject.Application.Idea.Common;
+using Microsoft.AspNetCore.Http;
 
 namespace MercuryProject.Application.Idea.Create
 {
@@ -10,6 +11,6 @@ namespace MercuryProject.Application.Idea.Create
         string Description,
         decimal Goal,
         string Category,
-        List<string> IconUrls
+        List<IFormFile>? Files
     ) : IRequest<ErrorOr<IdeaResult>>;
 }
